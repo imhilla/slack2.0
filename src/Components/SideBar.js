@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord'
 import CreateIcon from '@material-ui/icons/Create';
+import SideBarOption from './SideBarOption';
+import { BookmarkBorder, ExpandLess, PeopleAlt, InsertComment, FileCopy, Inbox, Icon, Apps } from '@material-ui/icons';
 
 function SideBar() {
   return (
@@ -16,6 +18,15 @@ function SideBar() {
         </SideBarInfo>
         <CreateIcon />
       </SideBarHeader>
+
+      <SideBarOption Icon={InsertComment} title="Threads" />
+      <SideBarOption Icon={Inbox} title="Mentions & reactions" />
+      <SideBarOption Icon={BookmarkBorder} title="Channel browser" />
+      <SideBarOption Icon={PeopleAlt} title="People and user groups" />
+      <SideBarOption Icon={Apps} title="Apps" />
+      <SideBarOption Icon={FileCopy} title="file browser" />
+      <SideBarOption Icon={ExpandLess} title="Show less" />
+
     </SideBarContainer>
   )
 }
@@ -60,4 +71,11 @@ const SideBarInfo = styled.div`
     font-size: 13px;
     align-items: center;
   }
-` 
+
+  >h3 > .MuiSvgIcon-root {
+    font-size: 14px;
+    margin-top: 1px;
+    margin-right: 2px;
+    color: green;
+  }
+`

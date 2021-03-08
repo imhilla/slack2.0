@@ -1,21 +1,32 @@
 import React from 'react';
 import { StarBorderOutlined, InfoOutlined } from '@material-ui/icons';
 import styled from 'styled-components';
+import { selectRoomId } from '../features/app';
 
 export default function Chat() {
+  const state = useSelector(selectRoomId)
   return (
     <ChatContainer>
-      <Header>
-        <HeaderLeft>
-          <h4><strong>#Room name</strong></h4>
-          <StarBorderOutlined />
-        </HeaderLeft>
-        <HeaderRight>
-          <p>
-            <InfoOutlined /> Details
+      <>
+        <Header>
+          <HeaderLeft>
+            <h4><strong>#Room name</strong></h4>
+            <StarBorderOutlined />
+          </HeaderLeft>
+          <HeaderRight>
+            <p>
+              <InfoOutlined /> Details
           </p>
-        </HeaderRight>
-      </Header>
+          </HeaderRight>
+        </Header>
+        <ChatMessages>
+
+        </ChatMessages>
+        <ChatInput
+        //  channelName
+        channelId={roomId}
+        ></ChatInput>
+      </>
     </ChatContainer>
   )
 }
@@ -26,6 +37,9 @@ const Header = styled.div`
   padding:20px;
   border-bottom: 1px solid lightgray;
 `
+
+const ChatMessages = styled.div``
+
 const HeaderLeft = styled.div`
   display: flex;
   align-items:center;

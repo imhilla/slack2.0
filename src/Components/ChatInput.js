@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
-import { Button } from '@material-ui/core'
+import { Button } from '@material-ui/core';
+import { db } from '../firebase';
+import firebase from 'firebase';
+
 
 export default function ChatInput({ channelName, channelId }) {
+  const inputRef = useRef(null)
+
   const sendMessage = (e) => {
     e.preventDefault(); //prevent refresh
-
+    if (channelId) {
+      return false
+    }
+    db.collection('rooms').doc(channelId).collection('messages').add({
+      message: inputRef.current.value,
+      timeStamp: firebase.firestore.FieldValue.serverTimestamp()
+    })
   }
 
   return (
@@ -23,13 +34,13 @@ export default function ChatInput({ channelName, channelId }) {
 const ChatInputContainer = styled.div`
   border-radius: 20px;
 
-  > form{
+  > form {
     position:relative;
     display:flex;
     justify-content: center;
   }
 
-  >form input {
+  > form input {
     position:fixed;
     bottom:30px;
     width: 60%;

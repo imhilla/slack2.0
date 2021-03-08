@@ -43,6 +43,16 @@ const HeaderLeft = styled.div`
 }
 `
 const HeaderRight = styled.div`
+  >p {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
+
+  >p .MuiSvgIcon-root {
+    margin-right: 5px !important;
+    font-size:16px;
+  }
 `
 
 const ChatContainer = styled.div`

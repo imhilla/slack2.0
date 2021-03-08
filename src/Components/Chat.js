@@ -6,7 +6,7 @@ import { selectRoomId } from '../features/app';
 import ChatInput from '../Components/ChatInput';
 
 export default function Chat() {
-  const state = useSelector(selectRoomId)
+  const roomId = useSelector(selectRoomId)
   return (
     <ChatContainer>
       <>
@@ -26,7 +26,7 @@ export default function Chat() {
         </ChatMessages>
         <ChatInput
         //  channelName
-        // channelId={roomId}
+        channelId={roomId}
         ></ChatInput>
       </>
     </ChatContainer>

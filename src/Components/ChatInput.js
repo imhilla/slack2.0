@@ -10,7 +10,7 @@ export default function ChatInput({ channelName, channelId }) {
 
   const sendMessage = (e) => {
     e.preventDefault(); //prevent refresh
-    if (channelId) {
+    if (!channelId) {
       return false
     }
     db.collection('rooms').doc(channelId).collection('messages').add({

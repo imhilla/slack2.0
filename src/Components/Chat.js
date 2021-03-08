@@ -1,7 +1,9 @@
 import React from 'react';
 import { StarBorderOutlined, InfoOutlined } from '@material-ui/icons';
 import styled from 'styled-components';
+import {useSelector} from 'react-redux';
 import { selectRoomId } from '../features/app';
+import ChatInput from '../Components/ChatInput';
 
 export default function Chat() {
   const state = useSelector(selectRoomId)
@@ -24,7 +26,7 @@ export default function Chat() {
         </ChatMessages>
         <ChatInput
         //  channelName
-        channelId={roomId}
+        // channelId={roomId}
         ></ChatInput>
       </>
     </ChatContainer>

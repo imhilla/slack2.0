@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { enterRoom } from '../features/appSlice';
+import { enterRoom } from '../features/app.js';
 
 import { db } from '../firebase';
 

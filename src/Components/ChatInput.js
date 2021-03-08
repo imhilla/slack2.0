@@ -24,7 +24,7 @@ export default function ChatInput({ channelName, channelId }) {
   return (
     <ChatInputContainer>
       <form>
-        <input onChange={(e) => setInput(e.target.value)} value={input} placeholder={`Message Room`} />
+        <input onChange={(e) => setInput(e.target.value)} value={input} placeholder={`Message #${channelName}`} />
         <Button hidden type='submit' onClick={sendMessage}>
           SEND
         </Button>

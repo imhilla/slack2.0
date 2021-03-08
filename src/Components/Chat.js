@@ -1,12 +1,24 @@
 import React from 'react';
 import { StarBorderOutlined, InfoOutlined } from '@material-ui/icons';
 import styled from 'styled-components';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectRoomId } from '../features/app';
 import ChatInput from '../Components/ChatInput';
+import { useCollection, useDocument } from 'react-firebase-hooks/firestore';
+import { db } from '../firebase';
 
 export default function Chat() {
-  const roomId = useSelector(selectRoomId)
+  const roomId = useSelector(selectRoomId);
+  const [roomDetails] = useDocument(
+    roomId && db.collection('rooms').doc(roomId)
+  )
+
+  const [roomMessages] = useCollection(
+    roomId && db.collection('rooms').doc(roomId).collection('messages').orderBy("timestamp", "desc")
+  )
+
+  console.log(roomDetails);
+
   return (
     <ChatContainer>
       <>
@@ -25,9 +37,9 @@ export default function Chat() {
 
         </ChatMessages>
         <ChatInput
-        //  channelName
-        channelId={roomId}
-        ></ChatInput>
+          channelName={roomDetails?.data().name}
+          channelId={roomId}
+        />
       </>
     </ChatContainer>
   )

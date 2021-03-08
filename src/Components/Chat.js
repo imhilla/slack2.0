@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { StarBorderOutlined, InfoOutlined } from '@material-ui/icons';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
@@ -7,18 +7,24 @@ import ChatInput from '../Components/ChatInput';
 import { useCollection, useDocument } from 'react-firebase-hooks/firestore';
 import { db } from '../firebase';
 import Message from '../Components/Message';
+import { current } from 'immer';
 
 export default function Chat() {
+  const chatRef = useRef(null);
+
   const roomId = useSelector(selectRoomId);
   const [roomDetails] = useDocument(
     roomId && db.collection('rooms').doc(roomId)
   )
 
-  const [roomMessages] = useCollection(
+  const [roomMessages, loading] = useCollection(
     roomId && db.collection('rooms').doc(roomId).collection('messages').orderBy("timestamp", "desc")
   )
 
-  console.log(roomDetails);
+  useEffect(() => {
+    chatRef?.current?.scrollIntoView()
+  }, [roomId, loading])
+
 
   return (
     <ChatContainer>
@@ -35,10 +41,10 @@ export default function Chat() {
           </HeaderRight>
         </Header>
         <ChatMessages>
-           {roomMessages?.docs.map(doc =>{
-            const {message, timestamp, user, userImage} = doc.data() 
+          {roomMessages?.docs.map(doc => {
+            const { message, timestamp, user, userImage } = doc.data()
             return (
-              <Message 
+              <Message
                 key={doc.id}
                 message={message}
                 timestamp={timestamp}
@@ -46,7 +52,8 @@ export default function Chat() {
                 userImage={userImage}
               />
             )
-           })}
+          })}
+          <ChatBottom ref={chatRef} />
         </ChatMessages>
         <ChatInput
           channelName={roomDetails?.data().name}
@@ -62,6 +69,10 @@ const Header = styled.div`
   justify-content:space-between;
   padding:20px;
   border-bottom: 1px solid lightgray;
+`
+
+const ChatBottom = styled.div`
+  padding-bottom: 200px;
 `
 
 const ChatMessages = styled.div``

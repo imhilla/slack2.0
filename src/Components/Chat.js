@@ -6,6 +6,7 @@ import { selectRoomId } from '../features/app';
 import ChatInput from '../Components/ChatInput';
 import { useCollection, useDocument } from 'react-firebase-hooks/firestore';
 import { db } from '../firebase';
+import Message from '../Components/Message';
 
 export default function Chat() {
   const roomId = useSelector(selectRoomId);
@@ -24,7 +25,7 @@ export default function Chat() {
       <>
         <Header>
           <HeaderLeft>
-            <h4><strong>#Room name</strong></h4>
+            <h4><strong>#{roomDetails?.data().name}</strong></h4>
             <StarBorderOutlined />
           </HeaderLeft>
           <HeaderRight>
@@ -34,7 +35,18 @@ export default function Chat() {
           </HeaderRight>
         </Header>
         <ChatMessages>
-
+           {roomMessages?.docs.map(doc =>{
+            const {message, timestamp, user, userImage} = doc.data() 
+            return (
+              <Message 
+                key={doc.id}
+                message={message}
+                timestamp={timestamp}
+                user={user}
+                userImage={userImage}
+              />
+            )
+           })}
         </ChatMessages>
         <ChatInput
           channelName={roomDetails?.data().name}

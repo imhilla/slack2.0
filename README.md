@@ -21,13 +21,10 @@ Heres a live <a href="https://slack-20b65.web.app">link</a>
 
 ## Features
 
-Bookstore app has the following features
-- Add books to store.
-- Remove books from store.
-- Show progress.
-- Show chapters completed.
-- Show all books in store.
-- Category fiters.
+Slack 2.0 web  app has the following features
+- Create channels.
+- Send messages.
+- Firebase auth login.
 
 ## Built with
 

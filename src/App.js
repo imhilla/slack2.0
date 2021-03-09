@@ -16,7 +16,16 @@ import Login from './Components/Login'
 
 
 function App() {
-  const [user, loading] = useAuthState(auth)
+  const [user, loading] = useAuthState(auth);
+  if (loading) {
+    return (
+      <AppLoading>
+        <AppLoadingContents>
+
+        </AppLoadingContents>
+      </AppLoading>
+    )
+  }
 
   return (
     <div className="app">
@@ -47,4 +56,12 @@ export default App;
 const AppBody = styled.div`
   display: flex;
   height: 100vh;
+`
+
+const AppLoading = styled.div`
+
+`
+
+const AppLoadingContents = styled.div`
+
 `

@@ -3,10 +3,13 @@ import styled from 'styled-components';
 import { Button } from '@material-ui/core';
 import { db } from '../firebase';
 import firebase from 'firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../firebase';
 
 
 export default function ChatInput({ channelName, channelId,chatRef }) {
   const [input, setInput] = useState('')
+  const [user] = useAuthState(auth)
   
   const sendMessage = (e) => {
     e.preventDefault(); //prevent refresh
@@ -17,8 +20,8 @@ export default function ChatInput({ channelName, channelId,chatRef }) {
     db.collection('rooms').doc(channelId).collection('messages').add({
       message: input,
       timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
-      user: 'Hillary Kiptoo',
-      userImage: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F58479445%3Fs%3D400%26v%3D4&imgrefurl=https%3A%2F%2Fgithub.com%2Fimhilla%2Fimhilla&tbnid=KclkEIriTG-KVM&vet=12ahUKEwjMtdues6LvAhUKIDQIHdlqClMQMygLegQIARBB..i&docid=2iHEkiUJcj5IhM&w=400&h=400&itg=1&q=hillary%20kiptoo&ved=2ahUKEwjMtdues6LvAhUKIDQIHdlqClMQMygLegQIARBB'
+      user: user.displayName,
+      userImage: user.photoURL,
     })
 
     chatRef?.current?.scrollIntoView({

@@ -5,9 +5,11 @@ import CreateIcon from '@material-ui/icons/Create';
 import SideBarOption from './SideBarOption';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { BookmarkBorder, ExpandLess, PeopleAlt, InsertComment, FileCopy, Inbox, Apps, ExpandMore, Add } from '@material-ui/icons';
-import { db } from '../firebase';
+import { db, auth } from '../firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 function SideBar() {
+  const [user] = useAuthState(auth)
   const [channels, loading, error] = useCollection(db.collection('rooms'))
 
   return (
@@ -17,7 +19,7 @@ function SideBar() {
           <h2>Hillary FAM</h2>
           <h3>
             <FiberManualRecordIcon />
-            Hillary Kiptoo
+            {user?.displayName}
           </h3>
         </SideBarInfo>
         <CreateIcon />

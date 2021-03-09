@@ -22,7 +22,6 @@ export default function SideBarOption({ id, Icon, title, addChannelOption }) {
       dispatch(enterRoom({
         roomId: id
       }))
-      console.log(id)
     }
   }
 

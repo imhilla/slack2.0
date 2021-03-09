@@ -10,7 +10,7 @@ export default function Message({message, timestamp, user, userImage}) {
           {user}{' '}
           <span>
             {new Date(timestamp?.toDate()).toUTCString()}
-          </span>
+          </span> 
         </h4>
         <p>{message}</p>
       </MessageInfo>
@@ -29,11 +29,11 @@ const MessageContainer = styled.div`
   }
 `
 const MessageInfo = styled.div`
-padding-left: 10px;
- >h4{
-   color: gray;
-   font-weight: 300;
-   margin-left: 4px;
-   font-size: 10px;
+  padding-left: 10px;
+  >h4{
+    color: gray;
+    font-weight: 300;
+    margin-left: 4px;
+    font-size: 10px;
  }
 `

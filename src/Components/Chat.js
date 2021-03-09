@@ -13,53 +13,60 @@ export default function Chat() {
   const chatRef = useRef(null);
 
   const roomId = useSelector(selectRoomId);
+
   const [roomDetails] = useDocument(
     roomId && db.collection('rooms').doc(roomId)
   )
 
   const [roomMessages, loading] = useCollection(
-    roomId && db.collection('rooms').doc(roomId).collection('messages').orderBy("timestamp", "desc")
+    roomId && db.collection('rooms').doc(roomId).collection('messages')
   )
 
   useEffect(() => {
-    chatRef?.current?.scrollIntoView()
+    chatRef?.current?.scrollIntoView({
+      behavior: "smooth",
+    })
   }, [roomId, loading])
-
 
   return (
     <ChatContainer>
-      <>
-        <Header>
-          <HeaderLeft>
-            <h4><strong>#{roomDetails?.data().name}</strong></h4>
-            <StarBorderOutlined />
-          </HeaderLeft>
-          <HeaderRight>
-            <p>
-              <InfoOutlined /> Details
+      {roomDetails && roomMessages && (
+        <>
+          <Header>
+            <HeaderLeft>
+              <h4><strong>#{roomDetails?.data().name}</strong></h4>
+              <StarBorderOutlined />
+            </HeaderLeft>
+            <HeaderRight>
+              <p>
+                <InfoOutlined /> Details
           </p>
-          </HeaderRight>
-        </Header>
-        <ChatMessages>
-          {roomMessages?.docs.map(doc => {
-            const { message, timestamp, user, userImage } = doc.data()
-            return (
-              <Message
-                key={doc.id}
-                message={message}
-                timestamp={timestamp}
-                user={user}
-                userImage={userImage}
-              />
-            )
-          })}
-          <ChatBottom ref={chatRef} />
-        </ChatMessages>
-        <ChatInput
-          channelName={roomDetails?.data().name}
-          channelId={roomId}
-        />
-      </>
+            </HeaderRight>
+          </Header>
+          <ChatMessages>
+            {roomMessages?.docs.map(doc => {
+              const { message, timestamp, user, userImage } = doc.data();
+              console.log(message)
+              return (
+                <Message
+                  key={doc.id}
+                  message={message}
+                  timestamp={timestamp}
+                  user={user}
+                  userImage={userImage}
+                />
+              )
+            })}
+            <ChatBottom ref={chatRef} />
+          </ChatMessages>
+          <ChatInput
+            chatRef={chatRef}
+            channelName={roomDetails?.data().name}
+            channelId={roomId}
+          />
+        </>
+      )}
+
     </ChatContainer>
   )
 }

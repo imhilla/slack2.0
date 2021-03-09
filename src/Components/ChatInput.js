@@ -17,14 +17,15 @@ export default function ChatInput({ channelName, channelId }) {
       message: input,
       timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
       user: 'Hillary Kiptoo',
-      userImage: ''
+      userImage: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F58479445%3Fs%3D400%26v%3D4&imgrefurl=https%3A%2F%2Fgithub.com%2Fimhilla%2Fimhilla&tbnid=KclkEIriTG-KVM&vet=12ahUKEwjMtdues6LvAhUKIDQIHdlqClMQMygLegQIARBB..i&docid=2iHEkiUJcj5IhM&w=400&h=400&itg=1&q=hillary%20kiptoo&ved=2ahUKEwjMtdues6LvAhUKIDQIHdlqClMQMygLegQIARBB'
     })
-   }
+    setInput('')
+  }
 
   return (
     <ChatInputContainer>
       <form>
-        <input onChange={(e) => setInput(e.target.value)} value={input} placeholder={`Message #${channelName}`} />
+        <input onChange={e => setInput(e.target.value)} value={input} placeholder={`Message #${channelName}`} />
         <Button hidden type='submit' onClick={sendMessage}>
           SEND
         </Button>

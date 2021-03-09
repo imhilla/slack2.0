@@ -7,7 +7,6 @@ import ChatInput from '../Components/ChatInput';
 import { useCollection, useDocument } from 'react-firebase-hooks/firestore';
 import { db } from '../firebase';
 import Message from '../Components/Message';
-import { current } from 'immer';
 
 export default function Chat() {
   const chatRef = useRef(null);

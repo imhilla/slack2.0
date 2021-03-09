@@ -1,68 +1,76 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Slack 2.0 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/imhilla/Bookstore)
 
-## Available Scripts
+[![License](https://img.shields.io/badge/License-MIT-green.svg)]()
+![GitHub followers](https://img.shields.io/github/followers/imhilla?label=imhilla&style=social)
+![Twitter URL](https://img.shields.io/twitter/follow/hillarykiptoo_?label=Follow&style=social)
 
-In the project directory, you can run:
 
-### `yarn start`
+>  Slack 2.0 !
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Description
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Slack 2.0 is a slack clone built with React, Redux, Firebase hooks, Google Auth, React hooks, styled components. This slack clone allows users to
+login with existing google account using firebase hooks. Users can login create channels, send messages.
 
-### `yarn test`
+## Live version
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Heres a live <a href="https://slack-20b65.web.app">link</a>
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src="./src/Images/slack.PNG" alt="">
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Bookstore app has the following features
+- Add books to store.
+- Remove books from store.
+- Show progress.
+- Show chapters completed.
+- Show all books in store.
+- Category fiters.
 
-### `yarn eject`
+## Built with
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- HTML
+- Git
+- CSS
+- JavaScript
+- Shields.io
+- Webpack
+- npm
+- command-line tools such as git.
+- React
+- Styled components
+- create-react-app-buildpack
+- Redux
+- Firebase
+- React Hooks
+- Firebase Hooks
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Author
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Reach out!
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+👤 **Hillary Kiptoo**
 
-## Learn More
+- LinkedIn: [Hillary Kiptoo](https://www.linkedin.com/in/hillarykiptoo)
+- Github: [@imhilla](https://github.com/imhilla)
+- Twitter: [@hillarykiptoo](https://twitter.com/hillarykiptoo_)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contributing 🤝
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contributions, issues, and feature requests are welcome!
 
-### Code Splitting
+## Acknowledgments
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- Thanks to Microverse for its support!
 
-### Analyzing the Bundle Size
+## Show your support
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Give a ⭐️ if you like this project!
 
-### Making a Progressive Web App
+## License
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- **[MIT license](http://opensource.org/licenses/mit-license.php)**

@@ -1,7 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Button} from '@material-ui/core';
+import { auth, provider } from '../firebase';
 
 export default function Login() {
+  const signIn = (e)=>{
+    e.preventDefault();
+    auth.signInWithPopup(provider).catch((error)=>
+      alert(error.messages)
+    )
+
+  }
+
   return (
     <LoginContainer>
       <LoginInnerContainer>
@@ -9,6 +19,9 @@ export default function Login() {
           src="http://assets.stickpng.com/images/5cb480cd5f1b6d3fbadece79.png"
           alt=""
         />
+        <h1>Sign in</h1>
+        <p>hillary.slack.com</p>
+        <Button onClick={signIn}>Sign in with google</Button>
       </LoginInnerContainer>
     </LoginContainer>
   )
@@ -30,5 +43,12 @@ const LoginInnerContainer = styled.div`
     object-fit: contain;
     height: 100px;
     margin-bottom: 40px;
+  }
+
+  > button {
+    margin-top: 50px;
+    text-transform: inherit !important;
+    background-color: #0a8d48 !important;
+    color: white;
   }
 `
